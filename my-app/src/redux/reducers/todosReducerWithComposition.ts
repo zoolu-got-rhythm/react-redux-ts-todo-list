@@ -1,4 +1,4 @@
-import {todo_actions, add_todo_action, delete_todo_action, toggle_todo_action, createNewTodoActionHelper} from "../actions/todos";
+import {todo_actions, add_todo_action, delete_todo_action, toggle_todo_action, createNewTodoActionHelper, make_todo_action} from "../actions/todos";
 import * as actions from "../types/todos"; 
 
 // state shape
@@ -12,9 +12,10 @@ export type TODO_STATE_OR_UNDEFINED = TODO_STATE | undefined;
 
 // reducer composition
 const todo = (state: TODO_STATE_OR_UNDEFINED, action: todo_actions): TODO_STATE_OR_UNDEFINED => {
+    console.log(action); 
     switch(action.type){
-        case actions.ADD_TODO_ACTION:
-            let castedAction: add_todo_action = <add_todo_action>action; 
+        case actions.MAKE_TODO_ACTION:
+            let castedAction: make_todo_action = <make_todo_action>action; 
             return <TODO_STATE>{ 
                 id: castedAction.id, 
                 text: castedAction.text,

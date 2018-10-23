@@ -23,7 +23,7 @@ export interface delete_todo_action extends baseAction{
    readonly idOfTodoToDelete: number
 }
 
-export type todo_actions = add_todo_action | toggle_todo_action | delete_todo_action; 
+export type todo_actions = add_todo_action | toggle_todo_action | delete_todo_action | make_todo_action; 
 
 export function addTodoActionHelper(text: string): add_todo_action{
     return {
@@ -34,12 +34,11 @@ export function addTodoActionHelper(text: string): add_todo_action{
 
 export function createNewTodoActionHelper(id: number, text: string): make_todo_action{
     return {
-        type: actions.ADD_TODO_ACTION, 
+        type: actions.MAKE_TODO_ACTION, 
         text, 
         id
     }
 }
-
 
 export function toggleTodoActionHelper(id: number): toggle_todo_action{
     return {

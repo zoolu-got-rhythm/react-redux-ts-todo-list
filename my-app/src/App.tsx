@@ -1,7 +1,10 @@
 import * as React from 'react';
 import './App.css';
 
-import { TODOS_ARRAY, TODO_STATE } from './redux/reducers/todosReducerWithComposition';
+import { TODOS_ARRAY } from './redux/reducers/todosReducerWithComposition';
+import TodoList from './TodoListComponent/TodoList';
+import { Provider } from 'react-redux';
+import { store } from 'src';
 
 // import { Provider } from 'react-redux';
 
@@ -29,19 +32,7 @@ import { TODOS_ARRAY, TODO_STATE } from './redux/reducers/todosReducerWithCompos
 // }
 
 
-interface TodoListProps {
-  todoArray: TODOS_ARRAY
-}
 
-function TodoList(props: TodoListProps){
-  return (
-    <ul> 
-      {props.todoArray.map((todo: TODO_STATE) => {
-        return <li> {todo.id + " : " + todo.text + ".. status: " + todo.completed} </li> 
-      })} 
-    </ul>
-  )
-}
 
 // interface State {}
 
@@ -71,11 +62,15 @@ class App extends React.Component<Props, {}> {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">++
+        <header className="App-header">
           <h1 className="App-title"> todo list experiment </h1>
           <button onClick={this.displayAlertBoxToAddNewTodo}> add new todo </button> 
         </header>
-        <TodoList todoArray={this.props.todosArray}/> 
+        
+        <Provider store={store}>
+          <TodoList /> 
+        </Provider>
+
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import * as actions from '../actions/todos';
 // import { TODOS_STATE } from '../reducers/todosReducerWithComposition';
 import { Dispatch } from 'redux';
-import App from 'src/App';
+import App from '../../App';
 import { connect } from 'react-redux';
 import { rootState } from '../store';
 
