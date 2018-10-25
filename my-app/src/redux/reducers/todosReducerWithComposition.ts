@@ -47,28 +47,37 @@ const todos = (state: TODOS_STATE = {numberOfTodosMade: 0, todosArray: []}, acti
             };
         case actions.DELETE_TODO_ACTION:
             let castedAction = <delete_todo_action>action;
-            if(castedAction.idOfTodoToDelete === 0)
+            let selectedTodoToDelete = <TODO_STATE>state.todosArray.filter(
+                (todo: TODO_STATE) => castedAction.idOfTodoToDelete === todo.id
+            )[0];
+
+            console.log("selected todo");
+            console.log(selectedTodoToDelete);
+
+            let indexOfTodo: number = state.todosArray.indexOf(selectedTodoToDelete);
+            console.log(indexOfTodo);
+            if(state.todosArray.length === 1)
                 return {...state, todosArray: state.todosArray.slice(1)};
-            if(castedAction.idOfTodoToDelete === state.todosArray.length)
+            if(indexOfTodo === state.todosArray.length - 1)
                 return {
                     ...state, 
                     todosArray: state.todosArray.slice(0, state.todosArray.length - 1)
-                }
+                };
                 
             return {
                 ...state, 
-                todosArray: state.todosArray.slice(0, castedAction.idOfTodoToDelete)
-                .concat().slice(castedAction.idOfTodoToDelete + 1, state.todosArray.length)
-            }
+                todosArray: state.todosArray.slice(0, indexOfTodo)
+                    .concat(state.todosArray.slice(indexOfTodo + 1))
+            };
         case actions.TOGGLE_TODO_ACTION:
-            let castedActionAsToggle = <toggle_todo_action> action;
+            let castedActionAsToggle = <toggle_todo_action>action;
             return {
                 ...state, 
-                todosArray: <TODOS_ARRAY>state.todosArray.map((todo: TODO_STATE, index: number) => {
-                    return index === castedActionAsToggle.idOfTodoToToggle ?
+                todosArray: <TODOS_ARRAY>state.todosArray.map((todo: TODO_STATE) => {
+                    return todo.id === castedActionAsToggle.idOfTodoToToggle ?
                         {...todo, completed: !todo.completed} : todo;
                 })
-            }
+            };
         default:
             return state;
 

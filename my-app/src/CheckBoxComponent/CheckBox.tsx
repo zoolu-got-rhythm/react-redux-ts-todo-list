@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './CheckBox.css';
 
 export interface Props{
     onCheck: (id: number) => void; 
@@ -7,7 +8,7 @@ export interface Props{
 
 export function CheckBox(props: Props){
     return (
-        <input type="checkbox" name="isTodoDone" value="todo" onClick={()=>{
+        <input id="checkbox" type="checkbox" name="isTodoDone" value="todo" onClick={()=>{
             props.onCheck(props.id); 
         }} />
     )

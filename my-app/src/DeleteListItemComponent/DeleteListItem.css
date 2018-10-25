@@ -1,0 +1,10 @@
+#bin{
+    width:15px;
+    height: 15px;
+}
+
+button{
+    margin-left: 5px;
+    padding: 2px;
+    border-radius: 3px;
+}

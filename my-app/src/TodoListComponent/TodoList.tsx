@@ -1,6 +1,5 @@
 import { TODOS_ARRAY, TODO_STATE } from "src/redux/reducers/todosReducerWithComposition";
 import * as React from 'react';
-import './TodoList.css';
 import { rootState } from 'src/redux/store';
 import { todo_actions } from 'src/redux/actions/todos';
 import { Dispatch } from 'redux';
@@ -26,7 +25,7 @@ class TodoList extends React.Component<TodoListProps, {}> {
             <div className="todos_container"> 
                 {this.props.todoArray.map((todo: TODO_STATE) => {                           
                     return <TodoItem onCheck={this.props.onCheck} onDelete={this.props.onDelete} todo={todo}/>
-                })} 
+                }).reverse()}
             </div>
         )
     }

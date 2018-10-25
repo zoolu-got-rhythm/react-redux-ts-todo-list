@@ -62,15 +62,15 @@ class App extends React.Component<Props, {}> {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header>
           <h1 className="App-title"> todo list experiment </h1>
-          <button onClick={this.displayAlertBoxToAddNewTodo}> add new todo </button> 
         </header>
         
         <Provider store={store}>
           <TodoList /> 
         </Provider>
 
+        <button onClick={this.displayAlertBoxToAddNewTodo}> add new todo </button>
       </div>
     );
   }
