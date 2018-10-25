@@ -3,6 +3,7 @@ import { TODO_STATE } from 'src/redux/reducers/todosReducerWithComposition';
 import { CheckBox } from 'src/CheckBoxComponent/CheckBox';
 import {DeleteListItem} from "../DeleteListItemComponent/DeleteListItem";
 import '../TodoItemComponent/TodoList.css';
+import TodoTextComponent from 'src/TodoTextComponent/TodoTextComponent';
 
 
 
@@ -17,11 +18,8 @@ export default function TodoItem(props: Props){
     return (
         (<div className="todo"> 
             <CheckBox onCheck={props.onCheck} id={props.todo.id} />
-            <h3 style={{textDecoration: props.todo.completed ? "line-through" : "none"}} >
-                {props.todo.id + " : " + props.todo.text.substring(0, 45) + ".."}
-            </h3>
+            <TodoTextComponent todoObject={props.todo}/> 
             <DeleteListItem id={props.todo.id} onDelete={props.onDelete} />
         </div>)
     )
-
 }

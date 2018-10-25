@@ -1,0 +1,15 @@
+h3{
+    font-size: 0.9em;
+    display: inline-block;
+    animation: text-glow; 
+    animation-duration: 1.5s; 
+}
+
+.todo_text_wrapper{
+    display: inline-block;
+}
+
+@keyframes text-glow {
+    from {color: white}
+    to {color: #333;}
+}

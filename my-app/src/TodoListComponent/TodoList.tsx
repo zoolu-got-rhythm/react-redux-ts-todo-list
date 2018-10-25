@@ -21,11 +21,13 @@ class TodoList extends React.Component<TodoListProps, {}> {
     }
 
     public render(){
+
+        const todoArrayReversed: TODOS_ARRAY = this.props.todoArray; // .reverse() 
         return (
             <div className="todos_container"> 
-                {this.props.todoArray.map((todo: TODO_STATE) => {                           
+                {todoArrayReversed.map((todo: TODO_STATE) => {                           
                     return <TodoItem onCheck={this.props.onCheck} onDelete={this.props.onDelete} todo={todo}/>
-                }).reverse()}
+                })}
             </div>
         )
     }
