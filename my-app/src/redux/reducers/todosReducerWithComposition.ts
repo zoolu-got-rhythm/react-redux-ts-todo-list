@@ -6,6 +6,7 @@ export interface TODO_STATE {
     id: number; 
     text: string; 
     completed?: boolean; 
+    date: Date
 }
 
 export type TODO_STATE_OR_UNDEFINED = TODO_STATE | undefined; 
@@ -19,7 +20,8 @@ const todo = (state: TODO_STATE_OR_UNDEFINED, action: todo_actions): TODO_STATE_
             return <TODO_STATE>{ 
                 id: castedAction.id, 
                 text: castedAction.text,
-                completed: false
+                completed: false, 
+                date: new Date(Date.now())
             };
         default: 
             return state;

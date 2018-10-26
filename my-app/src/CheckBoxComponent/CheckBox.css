@@ -2,3 +2,32 @@
     /*width:55px;*/
     /*height: 55px;*/
 }
+
+.checkbox_wrapper{
+    height: 100%; 
+    width: 15%; 
+    background: #eee; 
+    float: left; 
+    /* border-right: 1px solid grey;  */
+}
+
+label #checkbox{
+    display: none; 
+}
+
+.tick_box_custom{
+    width: 50%; 
+    height: 50%; 
+    border:1px solid black; 
+    margin: 0 auto; 
+    margin-top: 10%; 
+    cursor: pointer; 
+}
+
+label #checkbox:checked + .tick_box_custom{
+    /* background-color: red;  */
+    background-image: url('./check-tick.png');
+    background-size: 100% 100%;  
+    background-repeat: no-repeat;
+    border: 1px solid lime; 
+}

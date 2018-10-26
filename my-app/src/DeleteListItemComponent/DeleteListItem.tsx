@@ -17,8 +17,10 @@ export function DeleteListItem(props: Props){
     }
 
     return (
-        <button onClick={checkUserWantsToDelete}>
-            <img id="bin" src={require("./bin-icon.png")} />
-        </button>
+        <div className="bin_wrapper"> 
+            <button onClick={checkUserWantsToDelete}>
+                <img id="bin" src={require("./bin-icon.png")} />
+            </button>
+        </div> 
     )
 }

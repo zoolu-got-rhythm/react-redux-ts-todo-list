@@ -60,7 +60,7 @@ class TodoTextComponent extends React.Component<Props, State>{
         return (
             <div className="todo_text_wrapper"> 
                 <h3 style={{textDecoration: this.props.todoObject.completed ? "line-through" : "none"}} >
-                {this.props.todoObject.id + " : " + this.state.textState}
+                {this.state.textState}
                 </h3>   
             </div> 
         )

@@ -1,9 +1,15 @@
-.todo{
+.todo_container{
     text-align: center; 
-    padding: 5px;
+    /* padding: 5px; */
     border: 1px solid grey;
     border-bottom: 2px solid grey;
-
+    /* height: 50px;  */
     background: white; 
+}
+
+
+
+.todo_content_wrapper{
+    height: 40px; 
 }
 

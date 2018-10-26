@@ -1,12 +1,22 @@
 h3{
     font-size: 0.9em;
-    display: inline-block;
+    /* display: inline-block; */
     animation: text-glow; 
     animation-duration: 1.5s; 
+    text-align: left; 
+    margin-left: 10px; 
+    /* margin-bottom: 25px;  */
+    /* padding-top: 0px;  */
+    /* margin: 0px;  */
 }
 
 .todo_text_wrapper{
-    display: inline-block;
+    /* display: inline-block; */
+    /* background: yellow;  */
+    height: 100%; 
+    width: 70%; 
+    float: left; 
+    /* padding: 5px;  */
 }
 
 @keyframes text-glow {

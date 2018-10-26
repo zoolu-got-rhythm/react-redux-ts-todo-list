@@ -8,8 +8,13 @@ export interface Props{
 
 export function CheckBox(props: Props){
     return (
-        <input id="checkbox" type="checkbox" name="isTodoDone" value="todo" onClick={()=>{
-            props.onCheck(props.id); 
-        }} />
+        <div className="checkbox_wrapper">
+            <label>  
+                <input id="checkbox" type="checkbox" name="isTodoDone" value="todo" onClick={()=>{
+                    props.onCheck(props.id); 
+                }} />
+                <div className="tick_box_custom"> </div> 
+            </label>
+        </div> 
     )
 }
