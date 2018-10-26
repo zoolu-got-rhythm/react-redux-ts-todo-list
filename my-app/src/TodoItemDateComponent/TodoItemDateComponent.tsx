@@ -9,9 +9,13 @@ interface Props{
 export default function TodoItemDate(props: Props){
     return (
         <div className="time-wrapper"> 
-                {"#" + props.todoObject.id + ":    " + props.todoObject.date.getHours() + ":" + 
+                {"#" + props.todoObject.id + " " + props.todoObject.date.getHours() + ":" + 
                 props.todoObject.date.getMinutes() + ":" +
-                props.todoObject.date.getSeconds()}
+                props.todoObject.date.getSeconds()}  
+                {props.todoObject.date.getHours() as number < 12 ? "am " : "pm " }
+                {props.todoObject.date.getUTCDate() + "/" +
+                props.todoObject.date.getMonth() + "/" +
+                props.todoObject.date.getFullYear()}
             </div>
     )    
 }

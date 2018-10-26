@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TODO_STATE } from 'src/redux/reducers/todosReducerWithComposition';
 import { CheckBox } from 'src/CheckBoxComponent/CheckBox';
 import {DeleteListItem} from "../DeleteListItemComponent/DeleteListItem";
-import '../TodoListComponent/TodoList.css';
+import './TodoItem.css';
 import TodoTextComponent from 'src/TodoTextComponent/TodoTextComponent';
 import TodoItemDate from 'src/TodoItemDateComponent/TodoItemDateComponent';
 
