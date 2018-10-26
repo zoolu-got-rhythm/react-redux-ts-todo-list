@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import * as actions from '../redux/actions/todos'
 import { connect } from 'react-redux';
 import TodoItem from 'src/TodoItemComponent/TodoItem';
+import './TodoList.css'; 
 
 interface TodoListProps {
     todoArray: TODOS_ARRAY

@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  padding: 10px;
+  
+  background: #aaa; 
+  width: 400px; 
+  border-radius: 5px; 
 }
 
 .App-logo {
@@ -15,7 +20,7 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 0.8em; 
 }
 
 .App-intro {
