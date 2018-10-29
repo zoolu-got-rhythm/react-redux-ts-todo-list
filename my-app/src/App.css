@@ -31,6 +31,10 @@
   font-size: large;
 }
 
+#unicode-icon {
+  font-size: 1.6em; 
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
