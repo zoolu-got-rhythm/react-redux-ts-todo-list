@@ -2,9 +2,10 @@
   text-align: center;
   padding: 10px;
   
-  background: #aaa; 
+  /*background: #aaa; */
   width: 400px; 
-  border-radius: 5px; 
+  border-radius: 5px;
+  border: 2px solid lime;
 }
 
 .App-logo {

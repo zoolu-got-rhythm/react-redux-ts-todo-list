@@ -14,7 +14,19 @@ export type todo_filter_actions = show_all_active_todos_action | show_all_comple
  | show_all_todos_action; 
 
  export function showAllTodosActionHelper(): show_all_todos_action{
-     return {
-         type: todoFilterActions.SHOW_ALL_TODOS_ACTION
-     }
- }
+    return {
+        type: todoFilterActions.SHOW_ALL_TODOS_ACTION
+    }
+}
+
+export function showAllTodosCompletedActionHelper(): show_all_completed_todos_actions{
+    return {
+        type: todoFilterActions.SHOW_ALL_COMPLETED_TODOS_ACTION
+    }
+}
+
+export function showAllActiveTodosActionHelper(): show_all_active_todos_action{
+    return {
+        type: todoFilterActions.SHOW_ALL_ACTIVE_TODOS_ACTION
+    }
+}

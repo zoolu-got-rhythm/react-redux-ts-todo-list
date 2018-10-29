@@ -5,6 +5,7 @@ import { TODOS_ARRAY } from './redux/reducers/todosReducerWithComposition';
 import TodoList from './TodoListComponent/TodoList';
 import { Provider } from 'react-redux';
 import { store } from 'src';
+import NavContainerComponent from "./NavContainerComponent/NavContainerComponent";
 
 // import { Provider } from 'react-redux';
 
@@ -37,7 +38,7 @@ import { store } from 'src';
 // interface State {}
 
 interface Props {
-  addNewTodo: (text: string) => void; 
+
   todosArray: TODOS_ARRAY; 
 }
 
@@ -45,18 +46,8 @@ class App extends React.Component<Props, {}> {
 
   constructor(props: Props){
     super(props); 
-    this.displayAlertBoxToAddNewTodo = this.displayAlertBoxToAddNewTodo.bind(this); 
-    console.log("PROPS"); 
+    console.log("PROPS");
     console.log(props); 
-  }
-
-  public displayAlertBoxToAddNewTodo(): void{
-    let val: any = window.prompt("add todo description"); 
-    if(typeof val === "number")
-        val = val.toString() as string; 
-
-    // dispatch action with val to redux store
-    this.props.addNewTodo(val); 
   }
 
   public render() {
@@ -70,9 +61,12 @@ class App extends React.Component<Props, {}> {
           <TodoList /> 
         </Provider>
 
+          <Provider store={store}>
+              <NavContainerComponent />
+          </Provider>
+
         
 
-        <button onClick={this.displayAlertBoxToAddNewTodo}> add new todo </button>
       </div>
     );
   }

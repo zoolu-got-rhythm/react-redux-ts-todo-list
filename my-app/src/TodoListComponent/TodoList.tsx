@@ -6,10 +6,12 @@ import { Dispatch } from 'redux';
 import * as actions from '../redux/actions/todos'
 import { connect } from 'react-redux';
 import TodoItem from 'src/TodoItemComponent/TodoItem';
-import './TodoList.css'; 
+import './TodoList.css';
+import {FilterType} from "../redux/reducers/filterTodosReducer";
 
 interface TodoListProps {
     todoArray: TODOS_ARRAY
+    filterTodosType: FilterType
     onCheck: (id: number) => void; 
     onDelete: (id: number) => void; 
   }
@@ -23,10 +25,23 @@ class TodoList extends React.Component<TodoListProps, {}> {
 
     public render(){
 
-        const todoArrayReversed: TODOS_ARRAY = this.props.todoArray; // .reverse() 
+        let todosArray: TODOS_ARRAY = [];
+        if(this.props.filterTodosType == FilterType.ACTIVE){
+            todosArray = this.props.todoArray.filter((todo: TODO_STATE) => {
+                return !todo.completed;
+            })
+        }else if(this.props.filterTodosType == FilterType.COMPLETED){
+            todosArray = this.props.todoArray.filter((todo: TODO_STATE) => {
+                return todo.completed;
+            })
+        }else{
+            todosArray = this.props.todoArray;
+        }
+
+
         return (
             <div className="todos_container"> 
-                {todoArrayReversed.map((todo: TODO_STATE) => {                           
+                {todosArray.map((todo: TODO_STATE) => {
                     return <TodoItem onCheck={this.props.onCheck} onDelete={this.props.onDelete} todo={todo}/>
                 })}
             </div>
@@ -36,7 +51,8 @@ class TodoList extends React.Component<TodoListProps, {}> {
 
 export function mapStateToProps(state: rootState) {
     return {
-      todoArray: state.todosReducer.todosArray
+      todoArray: state.todosReducer.todosArray,
+        filterTodosType: state.filterTodosReducer.filterType
     }
 }
 
