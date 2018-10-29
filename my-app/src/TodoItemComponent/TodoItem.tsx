@@ -22,7 +22,7 @@ export default function TodoItem(props: Props){
              <TodoItemDate todoObject={props.todo}/> 
 
             <div className="todo_content_wrapper"> 
-                <CheckBox onCheck={props.onCheck} id={props.todo.id} />
+                <CheckBox onCheck={props.onCheck} todoObject={props.todo} />
                 <TodoTextComponent todoObject={props.todo}/> 
                 <DeleteListItem id={props.todo.id} onDelete={props.onDelete} />
                 {/* <div style={{clear: "both"}} /> */}

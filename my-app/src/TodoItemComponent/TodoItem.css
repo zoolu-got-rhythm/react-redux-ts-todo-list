@@ -4,8 +4,8 @@
     border: 2px solid lime;
     /*border-bottom: 2px solid grey;*/
     /* height: 50px;  */
-    background: white;
-    margin-bottom:3px;
+    /* background: #888; */
+    margin:8px;
     border-radius: 5px;
     overflow: hidden;
 }

@@ -1,11 +1,14 @@
 .App {
   text-align: center;
   padding: 10px;
+  margin: 20px; 
   
   /*background: #aaa; */
   width: 400px; 
   border-radius: 5px;
-  border: 2px solid lime;
+  /* border: 2px solid lime; */
+  background: #ddd; 
+  border-bottom: 3px solid #aaa;
 }
 
 .App-logo {

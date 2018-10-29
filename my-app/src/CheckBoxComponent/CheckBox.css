@@ -24,10 +24,15 @@ label #checkbox{
     cursor: pointer; 
 }
 
-label #checkbox:checked + .tick_box_custom{
+/* label #checkbox:checked + .tick_box_custom{ */
     /* background-color: red;  */
-    background-image: url('./check-tick.png');
+
+
+
+    /* background-image: url('./check-tick.png');
     background-size: 100% 100%;  
     background-repeat: no-repeat;
     border: 1px solid lime; 
-}
+} */
+
+

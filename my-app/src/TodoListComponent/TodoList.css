@@ -1,7 +1,31 @@
 
 .todos_container{
-    width:400px; 
+    width:100%; 
+    height: 260px; 
+    /* padding: 10px;  */
+    background: #888; 
+    background-image: linear-gradient(#ccc, #999);
     margin: 0 auto; 
     overflow: scroll;
+    overflow-x: hidden;
+    /* overflow-y: hidden;  */
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px; 
+    border-top: 3px solid #aaa; 
     /*background: grey; */
+}
+
+
+.todos_container::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+.todos_container::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); */
+    border-left: 1px solid #aaa; 
+}
+ 
+.todos_container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

@@ -54,7 +54,7 @@ class App extends React.Component<Props, {}> {
     return (
       <div className="App">
         <header>
-          <h1 className="App-title"> todo list widget </h1>
+          <h1 className="App-title"> todo list widget ✎ </h1>
         </header>
         
         <Provider store={store}>

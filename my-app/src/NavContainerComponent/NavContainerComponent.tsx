@@ -43,23 +43,22 @@ class NavContainerComponent extends React.Component<Props, {}> {
     public render(){
         return (
             <div id="nav_container">
-                <button onClick={this.props.onShowAll}
+                <button className="show-all-button" onClick={this.props.onShowAll}
                     style={{background: this.checkFilterTypeIsAMatch(FilterType.ALL) ? "lime" : "none"}}>
                     show all
                 </button>
 
-                <button
-                    onClick={this.props.onShowActive}
+                <button className="show-active-button" onClick={this.props.onShowActive}
                     style={{background: this.checkFilterTypeIsAMatch(FilterType.ACTIVE) ? "lime" : "none"}}>
                     show active
                 </button>
 
-                <button onClick={this.props.onShowDone}
+                <button className="show-done-button" onClick={this.props.onShowDone}
                         style={{background: this.checkFilterTypeIsAMatch(FilterType.COMPLETED) ? "lime" : "none"}}>
                     show done
                 </button>
 
-                <button onClick={this.displayAlertBoxToAddNewTodo}>
+                <button id="create-todo-button" onClick={this.displayAlertBoxToAddNewTodo}>
                     <img id="create-todo-image" src={require("./write_note_icon.png")} />
                 </button>
             </div>

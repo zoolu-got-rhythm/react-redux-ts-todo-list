@@ -1,9 +1,43 @@
 #create-todo-image{
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
 }
 
 #nav_container{
-    background: grey;
+    background: #ddd;
+    padding: 5px; 
+    border-bottom-right-radius: 5px; 
+    border-bottom-left-radius: 5px; 
+    border:1px solid #aaa; 
+    /* box-shadow: 0px -3px 10px #888888 */
+}
+
+
+
+#nav_container button {
+    padding: 10px; 
+    background: white; 
+    border-bottom: 3px solid #999; 
+    cursor: pointer; 
+    /* margin-top: -13÷0px;  */
+}
+
+#nav_container #create-todo-button{
+    background: none; 
+    border-radius: 10px;   
+    padding: 10px;
+    margin-top: 0px; 
+    /* padding-top: 3px;   */
+    margin-left: 10px; 
+}
+
+.show-all-button{
+    border-top-left-radius: 15px; 
+    border-bottom-left-radius: 15px; 
+}
+
+.show-done-button{
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px; 
 }
 
