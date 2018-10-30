@@ -1,15 +1,18 @@
 import { TODO_STATE } from "src/redux/reducers/todosReducerWithComposition";
 import * as React from 'react';
 import './TodoTextComponent.css'; 
+import trimTitleOfTodoDown from 'src/utils/longTextTrimmer';
 
 interface Props{
     todoObject: TODO_STATE;  
+    onEdit: (id: number, text: string) => void; 
 }
 
 interface State{
     textState: string; 
     editMode: boolean; 
     textInEdit: string; 
+    cutOfCharacterPoint: number; 
 }
 
 
@@ -19,7 +22,8 @@ class TodoTextComponent extends React.Component<Props, State>{
         this.state = {
             textState: "",
             editMode: false,
-            textInEdit: props.todoObject.text
+            textInEdit: props.todoObject.text, 
+            cutOfCharacterPoint: 35
         }
         this.setEditMode = this.setEditMode.bind(this); 
         this.handleChange = this.handleChange.bind(this);
@@ -33,36 +37,23 @@ class TodoTextComponent extends React.Component<Props, State>{
         })
     }
 
-    private textRollAnimate = (textCutOffPoint: number): void => {
+
+    private textRollAnimate = (todoText: string): void => {
         let count: number = 0; 
-        let dotsAdded: number = 0; 
         let timerId = window.setInterval(() => {
             count++; 
 
-            if(count >= (textCutOffPoint - 2)){
-                dotsAdded++; 
-                this.setState({
-                    textState: this.state.textState + "."
-                })
-                if(dotsAdded == 2){
-                    window.clearInterval(timerId); 
-                }
-            }else{
-                this.setState({
-                    textState: this.props.todoObject.text.substring(0, count)
-                })
-            }
-
-            if(count == this.props.todoObject.text.length){
-                window.clearInterval(timerId);
-                // return? 
-            }
-                
-            if(count == textCutOffPoint){
+            this.setState({
+                textState: this.props.todoObject.text.substring(0, count)
+            })
+        
+            if(count == todoText.length){
                 window.clearInterval(timerId); 
             }
         }, 1000 / 55); 
     }
+
+    
 
     private handleChange(event: any): void {
         this.setState({textInEdit: event.target.value});
@@ -70,13 +61,29 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     private handleSubmit(event: any) {
     // dispatch action/call callback that handles dispatch of action
-        if(event.keyCode === 13)
+        if(event.keyCode === 13){
             this.setEditMode(false); 
+            console.log(this.state.textInEdit); 
+            this.props.onEdit(this.props.todoObject.id, this.state.textInEdit)
+        }
+            
     }
 
-    componentDidMount(){
+    componentDidUpdate(prevProps: Props): void {
+        // Typical usage (don't forget to compare props):
+        if (this.props.todoObject.text !== prevProps.todoObject.text) {
+          this.setState(
+              {
+                  textState: this.props.todoObject.text,
+                  textInEdit: this.props.todoObject.text
+             })
+        }
+      }
+
+    componentDidMount(): void{
         // this.setState({textState: ""})
-        this.textRollAnimate(35); 
+        let trimmedTextForTitle: string = trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint); 
+        this.textRollAnimate(trimmedTextForTitle);  
     }
 
     public render(){

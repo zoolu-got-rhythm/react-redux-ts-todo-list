@@ -14,6 +14,7 @@ interface TodoListProps {
     filterTodosType: FilterType
     onCheck: (id: number) => void; 
     onDelete: (id: number) => void; 
+    onEdit: (id: number, text: string) => void; 
   }
   
 // container component
@@ -42,7 +43,8 @@ class TodoList extends React.Component<TodoListProps, {}> {
         return (
             <div className="todos_container"> 
                 {todosArray.map((todo: TODO_STATE) => {
-                    return <TodoItem onCheck={this.props.onCheck} onDelete={this.props.onDelete} todo={todo}/>
+                    return <TodoItem onCheck={this.props.onCheck} 
+                    onDelete={this.props.onDelete} onEdit={this.props.onEdit} todo={todo}/>
                 })}
             </div>
         )
@@ -59,7 +61,8 @@ export function mapStateToProps(state: rootState) {
 export function mapDispatchToProps(dispatch: Dispatch<todo_actions>) {
     return {
       onCheck: (id: number) => dispatch(actions.toggleTodoActionHelper(id)),
-      onDelete: (id: number) => dispatch(actions.deleteTodoActionHelper(id))
+      onDelete: (id: number) => dispatch(actions.deleteTodoActionHelper(id)),
+      onEdit: (id: number, text: string) => dispatch(actions.editTodoAction(id, text))
     }
 }
 

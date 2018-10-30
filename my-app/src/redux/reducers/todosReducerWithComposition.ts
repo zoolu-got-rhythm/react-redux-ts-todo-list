@@ -1,4 +1,4 @@
-import {todo_actions, add_todo_action, delete_todo_action, toggle_todo_action, createNewTodoActionHelper, make_todo_action} from "../actions/todos";
+import {todo_actions, add_todo_action, delete_todo_action, toggle_todo_action, createNewTodoActionHelper, make_todo_action, edit_todo_action} from "../actions/todos";
 import * as actions from "../types/todos"; 
 
 // state shape
@@ -80,6 +80,18 @@ const todos = (state: TODOS_STATE = {numberOfTodosMade: 0, todosArray: []}, acti
                         {...todo, completed: !todo.completed} : todo;
                 })
             };
+        
+        case actions.EDIT_TODO_ACTION: 
+            let castedActionAsEdit = <edit_todo_action>action;
+
+            return {
+                ...state, 
+                todosArray: <TODOS_ARRAY>state.todosArray.map((todo: TODO_STATE) => {
+                    return todo.id === castedActionAsEdit.id ?
+                        {...todo, text: castedActionAsEdit.text} : todo;
+                })
+            }
+
         default:
             return state;
 
