@@ -11,6 +11,7 @@ import TodoItemDate from 'src/TodoItemDateComponent/TodoItemDateComponent';
 interface Props{
     onCheck: (id: number) => void; 
     onDelete: (id: number) => void;
+    onEdit: (id: number, text: string) => void; 
     todo: TODO_STATE 
 }
 
@@ -23,7 +24,7 @@ export default function TodoItem(props: Props){
 
             <div className="todo_content_wrapper"> 
                 <CheckBox onCheck={props.onCheck} todoObject={props.todo} />
-                <TodoTextComponent todoObject={props.todo}/> 
+                <TodoTextComponent todoObject={props.todo} onEdit={props.onEdit}/> 
                 <DeleteListItem id={props.todo.id} onDelete={props.onDelete} />
                 {/* <div style={{clear: "both"}} /> */}
             </div> 

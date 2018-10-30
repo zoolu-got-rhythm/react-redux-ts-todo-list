@@ -23,6 +23,11 @@ export interface delete_todo_action extends baseAction{
    readonly idOfTodoToDelete: number
 }
 
+export interface edit_todo_action extends baseAction{
+    readonly text: string; 
+    readonly id: number; 
+}
+
 export type todo_actions = add_todo_action | toggle_todo_action | delete_todo_action | make_todo_action; 
 
 export function addTodoActionHelper(text: string): add_todo_action{
@@ -53,4 +58,14 @@ export function deleteTodoActionHelper(idOfTodoToDelete: number): delete_todo_ac
         idOfTodoToDelete
     }
 }
+
+export function editTodoAction(id: number, text: string): edit_todo_action{
+    return {
+        type: actions.EDIT_TODO_ACTION,
+        id, 
+        text
+    }
+}
+
+
 
