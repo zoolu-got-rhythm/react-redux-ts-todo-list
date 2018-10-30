@@ -3,7 +3,8 @@ import * as React from 'react';
 import './TodoTextComponent.css'; 
 
 interface Props{
-    todoObject: TODO_STATE;  
+    todoObject: TODO_STATE;
+
 }
 
 interface State{
@@ -70,8 +71,11 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     private handleSubmit(event: any) {
     // dispatch action/call callback that handles dispatch of action
-        if(event.keyCode === 13)
-            this.setEditMode(false); 
+        if(event.keyCode === 13){
+
+            this.setEditMode(false);
+        }
+
     }
 
     componentDidMount(){
@@ -85,7 +89,8 @@ class TodoTextComponent extends React.Component<Props, State>{
         style={{textDecoration: this.props.todoObject.completed ? "line-through" : "none"}} >
             {this.state.textState}
         </h3> : <input className="edit-todo" onChange={this.handleChange}
-        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />; 
+        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
+
         return (
             <div className="todo_text_wrapper"> 
                 {textTitleOrEditElement}
