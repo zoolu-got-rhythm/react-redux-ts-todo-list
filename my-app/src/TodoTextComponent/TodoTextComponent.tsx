@@ -83,6 +83,7 @@ class TodoTextComponent extends React.Component<Props, State>{
     componentDidMount(): void{
         // this.setState({textState: ""})
         let trimmedTextForTitle: string = trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint); 
+        console.log(trimmedTextForTitle); 
         this.textRollAnimate(trimmedTextForTitle);  
     }
 
