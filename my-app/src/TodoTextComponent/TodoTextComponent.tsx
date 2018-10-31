@@ -73,7 +73,7 @@ class TodoTextComponent extends React.Component<Props, State>{
         if (this.props.todoObject.text !== prevProps.todoObject.text) {
           this.setState(
               {
-                  textState: this.props.todoObject.text,
+                  textState:  trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint),
                   textInEdit: this.props.todoObject.text
              })
         }
