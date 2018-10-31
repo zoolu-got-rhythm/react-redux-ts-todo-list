@@ -16,8 +16,8 @@ label #checkbox{
 }
 
 .tick_box_custom{
-    width: 50%; 
-    height: 50%; 
+    width: 25px; 
+    height: 25px; 
     border:1px solid black; 
     margin: 0 auto; 
     margin-top: 10%; 

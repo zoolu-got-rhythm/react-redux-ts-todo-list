@@ -8,7 +8,7 @@ export default function trimTitleOfTodoDown(title: string, cutOffPoint: number):
             console.log("normal case"); 
             return stringWithCutOffPoint.replace(regExSearchAndReplaceEndOfString, "$1...") as string; 
         }else{
-            return stringWithCutOffPoint.replace(/\s+/g, "...") as string; 
+            return stringWithCutOffPoint.replace(/\s+$/g, "...") as string; 
         }
     }else if(/^\s+$/g.exec(stringWithCutOffPoint) != null){
         return stringWithCutOffPoint.replace(/\s+/g, "...") as string; 
