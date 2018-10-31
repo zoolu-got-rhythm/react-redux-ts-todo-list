@@ -17,6 +17,7 @@ h3{
     height: 100%; 
     width: 70%; 
     float: left; 
+    cursor: text;
     /* padding: 5px;  */
 }
 
@@ -30,6 +31,8 @@ h3{
     margin-left: 0px; 
     margin-top: 7px; 
     width:235px; 
+    height: 80%; 
+    resize: none;
 }
 
 .todo-header-text{

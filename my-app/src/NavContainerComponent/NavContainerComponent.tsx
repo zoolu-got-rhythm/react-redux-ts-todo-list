@@ -28,12 +28,13 @@ class NavContainerComponent extends React.Component<Props, {}> {
 
     public displayAlertBoxToAddNewTodo(): void{
         let val: any = window.prompt("add todo description");
+        if(val == null)
+            return; 
         if(typeof val === "number")
             val = val.toString() as string;
 
         // dispatch action with val to redux store
         this.props.addNewTodo(val);
-
     }
 
     private checkFilterTypeIsAMatch(filterType: FilterType): boolean{

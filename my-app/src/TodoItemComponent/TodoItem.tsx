@@ -15,20 +15,44 @@ interface Props{
     todo: TODO_STATE 
 }
 
-export default function TodoItem(props: Props){
-
-    return (
-        (<div className="todo_container"> 
-
-             <TodoItemDate todoObject={props.todo}/> 
-
-            <div className="todo_content_wrapper"> 
-                <CheckBox onCheck={props.onCheck} todoObject={props.todo} />
-                <TodoTextComponent todoObject={props.todo} onEdit={props.onEdit}/> 
-                <DeleteListItem id={props.todo.id} onDelete={props.onDelete} />
-                {/* <div style={{clear: "both"}} /> */}
-            </div> 
-            
-        </div>)
-    )
+interface State{
+    todoIsExpanded: boolean; 
 }
+
+class TodoItem extends React.Component<Props, State>{
+    constructor(props: Props){
+        super(props); 
+        this.state = {
+            todoIsExpanded: false
+        }
+        this.setTodoIsExpanded = this.setTodoIsExpanded.bind(this); 
+    }
+
+    private setTodoIsExpanded(bool: boolean): void{
+        this.setState({todoIsExpanded: bool})
+    }
+
+    render(){
+        // wrapper styles
+        const isTodoWrapperExpandedStyles = {height: this.state.todoIsExpanded ? "100px": "40px"}; 
+
+        return (
+            (<div className="todo_container"> 
+    
+                 <TodoItemDate todoObject={this.props.todo}/> 
+    
+                <div className="todo_content_wrapper" style={isTodoWrapperExpandedStyles}> 
+                    <CheckBox onCheck={this.props.onCheck} todoObject={this.props.todo} />
+                    <TodoTextComponent todoObject={this.props.todo} onEdit={this.props.onEdit} 
+                        expandWindow={this.setTodoIsExpanded}/> 
+                    <DeleteListItem id={this.props.todo.id} onDelete={this.props.onDelete} />
+                    {/* <div style={{clear: "both"}} /> */}
+                </div> 
+                
+            </div>)
+        )
+    }
+    
+}
+
+export default TodoItem; 

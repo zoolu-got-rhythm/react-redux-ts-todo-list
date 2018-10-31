@@ -6,6 +6,7 @@ import trimTitleOfTodoDown from 'src/utils/longTextTrimmer';
 interface Props{
     todoObject: TODO_STATE;  
     onEdit: (id: number, text: string) => void;
+    expandWindow: (bool: boolean) => void; 
 }
 
 interface State{
@@ -25,6 +26,10 @@ class TodoTextComponent extends React.Component<Props, State>{
             textInEdit: props.todoObject.text, 
             cutOfCharacterPoint: 25
         }
+
+        //@ts-ignore
+        // this.textAreaRef = React.createRef(); 
+
         this.setEditMode = this.setEditMode.bind(this); 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -35,6 +40,8 @@ class TodoTextComponent extends React.Component<Props, State>{
         this.setState({
             editMode: bool
         })
+
+        this.props.expandWindow(bool); 
     }
 
 
@@ -88,14 +95,14 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     public render(){
         const textTitleOrEditElement = !this.state.editMode ? 
-        <h3 onClick={()=>this.setEditMode(true)} className="todo-header-text"
+        <h3 className="todo-header-text"
         style={{textDecoration: this.props.todoObject.completed ? "line-through" : "none"}} >
             {this.state.textState}
-        </h3> : <input className="edit-todo" onChange={this.handleChange}
-        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
+        </h3> : <textarea autoFocus className="edit-todo" onChange={this.handleChange}
+         value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
 
         return (
-            <div className="todo_text_wrapper"> 
+            <div className="todo_text_wrapper" onClick={()=>this.setEditMode(true)}> 
                 {textTitleOrEditElement}
             </div> 
         )
