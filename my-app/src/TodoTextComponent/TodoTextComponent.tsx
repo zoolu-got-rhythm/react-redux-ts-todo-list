@@ -23,7 +23,7 @@ class TodoTextComponent extends React.Component<Props, State>{
             textState: "",
             editMode: false,
             textInEdit: props.todoObject.text, 
-            cutOfCharacterPoint: 35
+            cutOfCharacterPoint: 25
         }
         this.setEditMode = this.setEditMode.bind(this); 
         this.handleChange = this.handleChange.bind(this);
@@ -44,7 +44,7 @@ class TodoTextComponent extends React.Component<Props, State>{
             count++; 
 
             this.setState({
-                textState: this.props.todoObject.text.substring(0, count)
+                textState: todoText.substring(0, count)
             })
         
             if(count == todoText.length){
