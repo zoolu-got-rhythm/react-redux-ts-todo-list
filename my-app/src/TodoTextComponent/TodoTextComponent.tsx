@@ -5,7 +5,7 @@ import trimTitleOfTodoDown from 'src/utils/longTextTrimmer';
 
 interface Props{
     todoObject: TODO_STATE;  
-    onEdit: (id: number, text: string) => void; 
+    onEdit: (id: number, text: string) => void;
 }
 
 interface State{
@@ -66,7 +66,6 @@ class TodoTextComponent extends React.Component<Props, State>{
             console.log(this.state.textInEdit); 
             this.props.onEdit(this.props.todoObject.id, this.state.textInEdit)
         }
-            
     }
 
     componentDidUpdate(prevProps: Props): void {
@@ -93,7 +92,8 @@ class TodoTextComponent extends React.Component<Props, State>{
         style={{textDecoration: this.props.todoObject.completed ? "line-through" : "none"}} >
             {this.state.textState}
         </h3> : <input className="edit-todo" onChange={this.handleChange}
-        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />; 
+        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
+
         return (
             <div className="todo_text_wrapper"> 
                 {textTitleOrEditElement}
