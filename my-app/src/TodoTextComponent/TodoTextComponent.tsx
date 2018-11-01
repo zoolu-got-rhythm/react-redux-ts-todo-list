@@ -24,7 +24,7 @@ class TodoTextComponent extends React.Component<Props, State>{
             textState: "",
             editMode: false,
             textInEdit: props.todoObject.text, 
-            cutOfCharacterPoint: 25
+            cutOfCharacterPoint: 30
         }
 
         //@ts-ignore
@@ -47,6 +47,8 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     private textRollAnimate = (todoText: string): void => {
         let count: number = 0; 
+        if(todoText.length == 0)
+            return; 
         let timerId = window.setInterval(() => {
             count++; 
 
@@ -77,6 +79,7 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     componentDidUpdate(prevProps: Props): void {
         // Typical usage (don't forget to compare props):
+        console.log(this.props.todoObject.id + " did update"); 
         if (this.props.todoObject.text !== prevProps.todoObject.text) {
           this.setState(
               {

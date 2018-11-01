@@ -13,6 +13,7 @@
     margin-top: 3px; 
     /* margin-top:15%;  */
     /* display: inline-block;  */
+    cursor: pointer; 
 }
 
 .bin_wrapper{
