@@ -43,15 +43,63 @@ interface Props {
 
 interface State {
   dragOffSetValue: number,
-  isCurrentlyDragging: boolean
+  isCurrentlyDragging: boolean,
+  initialCapturedMouseYPosition: number | null
 }
 
-class App extends React.Component<Props, {}> {
+class App extends React.Component<Props, State> {
 
   constructor(props: Props){
     super(props); 
     console.log("PROPS");
     console.log(props); 
+
+    this.state = {
+      dragOffSetValue: 0,
+      isCurrentlyDragging: false, 
+      initialCapturedMouseYPosition: null
+    }
+
+    this.onMouseDown = this.onMouseDown.bind(this); 
+    this.onMouseMove = this.onMouseMove.bind(this); 
+    this.onMouseUp = this.onMouseUp.bind(this);
+  }
+
+  private onMouseDown(e: React.MouseEvent<HTMLSpanElement>): void{
+    if(!this.state.isCurrentlyDragging){
+      this.setState({
+        isCurrentlyDragging: true,
+        initialCapturedMouseYPosition: e.pageY,
+        dragOffSetValue: 0
+      })
+    }
+
+    // document.addEventListener
+
+
+
+
+  }
+
+  private onMouseMove(e: React.MouseEvent<HTMLSpanElement>): void{
+    if(this.state.isCurrentlyDragging){
+      this.setState({
+        dragOffSetValue: e.pageY - (this.state.initialCapturedMouseYPosition as number)
+      })
+    }else{
+      this.setState({
+        dragOffSetValue: 0
+      })
+    }
+  }
+
+  private onMouseUp(e: React.MouseEvent<HTMLSpanElement>): void{
+    if(this.state.isCurrentlyDragging){
+      this.setState({
+        isCurrentlyDragging: false,
+        initialCapturedMouseYPosition: null,
+      })
+    }
   }
 
   public render() {
@@ -62,15 +110,15 @@ class App extends React.Component<Props, {}> {
         </header>
         
         <Provider store={store}>
-          <TodoList /> 
+          <TodoList dragOffSetValue={this.state.dragOffSetValue} /> 
         </Provider>
 
         <Provider store={store}>
           <NavContainerComponent />
         </Provider>
 
-        <span onClick={}> 
-        
+        <span id="drag-area" onMouseDown={this.onMouseDown} onMouseMove={this.onMouseMove} onMouseUp={this.onMouseUp}> 
+           - - - - - - - - -
         </span>
           
       </div>

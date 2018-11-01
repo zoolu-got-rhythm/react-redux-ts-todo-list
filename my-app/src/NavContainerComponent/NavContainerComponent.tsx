@@ -61,10 +61,6 @@ class NavContainerComponent extends React.Component<Props, {}> {
                 <button id="create-todo-button" onClick={this.displayAlertBoxToAddNewTodo}>
                     <img id="create-todo-image" src={require("./write_note_icon.png")} />
                 </button>
-
-                <span onClick={()=>{}}> 
-                    -
-                </span> 
             </div>
         )
     }
