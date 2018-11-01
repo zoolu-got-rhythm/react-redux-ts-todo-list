@@ -38,8 +38,12 @@ import NavContainerComponent from "./NavContainerComponent/NavContainerComponent
 // interface State {}
 
 interface Props {
-
   todosArray: TODOS_ARRAY; 
+}
+
+interface State {
+  dragOffSetValue: number,
+  isCurrentlyDragging: boolean
 }
 
 class App extends React.Component<Props, {}> {
@@ -61,12 +65,14 @@ class App extends React.Component<Props, {}> {
           <TodoList /> 
         </Provider>
 
-          <Provider store={store}>
-              <NavContainerComponent />
-          </Provider>
+        <Provider store={store}>
+          <NavContainerComponent />
+        </Provider>
 
+        <span onClick={}> 
         
-
+        </span>
+          
       </div>
     );
   }
