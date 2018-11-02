@@ -1,7 +1,7 @@
 
 .todos_container{
     width:100%; 
-    height: 260px; 
+    /* height: 260px;  */
     /* padding: 10px;  */
     background: #888; 
     background-image: linear-gradient(#ccc, #999);

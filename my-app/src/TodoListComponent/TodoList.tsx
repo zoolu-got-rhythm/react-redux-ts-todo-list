@@ -12,6 +12,7 @@ import {FilterType} from "../redux/reducers/filterTodosReducer";
 interface TodoListProps {
     todoArray: TODOS_ARRAY
     filterTodosType: FilterType
+    dragOffSetValue: number; 
     onCheck: (id: number) => void; 
     onDelete: (id: number) => void; 
     onEdit: (id: number, text: string) => void; 
@@ -41,7 +42,7 @@ class TodoList extends React.Component<TodoListProps, {}> {
 
 
         return (
-            <div className="todos_container"> 
+            <div className="todos_container" style={{height: (260 + this.props.dragOffSetValue).toString() + "px"}}> 
                 {todosArray.map((todo: TODO_STATE) => {
                     return <TodoItem onCheck={this.props.onCheck} 
                     onDelete={this.props.onDelete} onEdit={this.props.onEdit} todo={todo}/>

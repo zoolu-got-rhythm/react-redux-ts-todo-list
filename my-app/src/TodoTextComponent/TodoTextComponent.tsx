@@ -6,6 +6,7 @@ import trimTitleOfTodoDown from 'src/utils/longTextTrimmer';
 interface Props{
     todoObject: TODO_STATE;  
     onEdit: (id: number, text: string) => void;
+    expandWindow: (bool: boolean) => void; 
 }
 
 interface State{
@@ -23,8 +24,13 @@ class TodoTextComponent extends React.Component<Props, State>{
             textState: "",
             editMode: false,
             textInEdit: props.todoObject.text, 
-            cutOfCharacterPoint: 25
+
+            cutOfCharacterPoint: 30
         }
+
+        //@ts-ignore
+        // this.textAreaRef = React.createRef(); 
+
         this.setEditMode = this.setEditMode.bind(this); 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -35,11 +41,15 @@ class TodoTextComponent extends React.Component<Props, State>{
         this.setState({
             editMode: bool
         })
+
+        this.props.expandWindow(bool); 
     }
 
 
     private textRollAnimate = (todoText: string): void => {
         let count: number = 0; 
+        if(todoText.length == 0)
+            return; 
         let timerId = window.setInterval(() => {
             count++; 
 
@@ -70,10 +80,11 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     componentDidUpdate(prevProps: Props): void {
         // Typical usage (don't forget to compare props):
+        console.log(this.props.todoObject.id + " did update"); 
         if (this.props.todoObject.text !== prevProps.todoObject.text) {
           this.setState(
               {
-                  textState: trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint),
+                  textState:  trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint),
                   textInEdit: this.props.todoObject.text
              })
         }
@@ -81,21 +92,22 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     componentDidMount(): void{
         // this.setState({textState: ""})
-        let trimmedTextForTitle: string = trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint);
-        console.log(trimmedTextForTitle);
-        this.textRollAnimate(trimmedTextForTitle);  
+
+        let trimmedTextForTitle: string = trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint); 
+        console.log(trimmedTextForTitle); 
+        this.textRollAnimate(trimmedTextForTitle);
     }
 
     public render(){
         const textTitleOrEditElement = !this.state.editMode ? 
-        <h3 onClick={()=>this.setEditMode(true)} className="todo-header-text"
+        <h3 className="todo-header-text"
         style={{textDecoration: this.props.todoObject.completed ? "line-through" : "none"}} >
             {this.state.textState}
-        </h3> : <input className="edit-todo" onChange={this.handleChange}
-        type="text" value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
+        </h3> : <textarea autoFocus className="edit-todo" onChange={this.handleChange}
+         value={this.state.textInEdit} onKeyDown={this.handleSubmit} />;
 
         return (
-            <div className="todo_text_wrapper"> 
+            <div className="todo_text_wrapper" onClick={()=>this.setEditMode(true)}> 
                 {textTitleOrEditElement}
             </div> 
         )

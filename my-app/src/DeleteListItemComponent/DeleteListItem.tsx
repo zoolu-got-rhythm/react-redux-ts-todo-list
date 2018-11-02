@@ -9,6 +9,7 @@ export interface Props{
 
 export function DeleteListItem(props: Props){
 
+    // @ts-ignore
     function checkUserWantsToDelete(){
         let result: boolean = confirm("are you sure you " +
             "want to delete this todo?");
@@ -18,7 +19,7 @@ export function DeleteListItem(props: Props){
 
     return (
         <div className="bin_wrapper"> 
-            <button onClick={checkUserWantsToDelete}>
+            <button onClick={() => props.onDelete(props.id)}>
                 <img id="bin" src={require("./bin-icon.png")} />
             </button>
         </div> 
