@@ -12,7 +12,7 @@ export default function TodoItemDate(props: Props){
     return (
         <div className="time-wrapper"> 
             <span className="todo-time-information"> 
-                {"#" + props.todoObject.id + " " + dd(props.todoObject.date.getHours()) + ":" + 
+                {"#" + dd(props.todoObject.id) + " " + dd(props.todoObject.date.getHours()) + ":" + 
                 dd(props.todoObject.date.getMinutes()) + ":" +
                 dd(props.todoObject.date.getSeconds())}  
                 {props.todoObject.date.getHours() as number < 12 ? "am " : "pm " }
