@@ -41,5 +41,15 @@
 }
 
 #drag-area{
-  cursor: move; 
+  display: block; 
+  cursor: grab; 
+  margin-bottom: -17px; 
+}
+
+#drag_icon_image{
+  pointer-events: none; 
+  user-select: none;
+  z-index: -50; 
+  width: 50px; 
+  height: auto; 
 }

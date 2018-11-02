@@ -26,6 +26,6 @@
 }
  
 .todos_container::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: white;
   outline: 1px solid slategrey;
 }
