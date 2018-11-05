@@ -24,6 +24,7 @@ class TodoTextComponent extends React.Component<Props, State>{
             textState: "",
             editMode: false,
             textInEdit: props.todoObject.text, 
+
             cutOfCharacterPoint: 30
         }
 
@@ -66,7 +67,7 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     private handleChange(event: any): void {
         this.setState({textInEdit: event.target.value});
-      }
+    }
 
     private handleSubmit(event: any) {
     // dispatch action/call callback that handles dispatch of action
@@ -91,9 +92,10 @@ class TodoTextComponent extends React.Component<Props, State>{
 
     componentDidMount(): void{
         // this.setState({textState: ""})
+
         let trimmedTextForTitle: string = trimTitleOfTodoDown(this.props.todoObject.text, this.state.cutOfCharacterPoint); 
         console.log(trimmedTextForTitle); 
-        this.textRollAnimate(trimmedTextForTitle);  
+        this.textRollAnimate(trimmedTextForTitle);
     }
 
     public render(){

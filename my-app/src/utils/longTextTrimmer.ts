@@ -1,7 +1,8 @@
 
 
 export default function trimTitleOfTodoDown(title: string, cutOffPoint: number): string{
-    let stringWithCutOffPoint: string = title.substring(0, cutOffPoint); 
+    let stringWithCutOffPoint: string = title.substring(0, cutOffPoint);
+    console.log(stringWithCutOffPoint.length);
     if(stringWithCutOffPoint.length == cutOffPoint){
         let regExSearchAndReplaceEndOfString: RegExp = /(\w+)(?:\s+\w$|\s+$|$)/g; 
         if(regExSearchAndReplaceEndOfString.exec(stringWithCutOffPoint) != null){
@@ -13,6 +14,6 @@ export default function trimTitleOfTodoDown(title: string, cutOffPoint: number):
     }else if(/^\s+$/g.exec(stringWithCutOffPoint) != null){
         return stringWithCutOffPoint.replace(/\s+/g, "...") as string; 
     }else{
-        return stringWithCutOffPoint; 
+        return stringWithCutOffPoint;
     }
 }
